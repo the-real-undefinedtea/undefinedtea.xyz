@@ -1,0 +1,60 @@
+---
+import Meta from '../components/metaDescription.svelte'
+
+import Head from '../components/head.svelte'
+import Foot from '../components/foot.svelte'
+import Container from '../components/container.svelte'
+
+import Content from '../components/content.svelte'
+
+export interface Props {
+  content: {
+    topic: string
+    description: string
+    publish: string
+    draft: boolean
+    tag: any
+    author: any
+    image?: string
+  }
+}
+
+const {
+  content: { topic, description, publish, draft, tag, author, image}
+} = Astro.props
+---
+
+<html class="antialiased" lang="en">
+  <head>
+    <Meta route={ topic } description={ description } />
+  </head>
+  <body class="flex flex-col h-full bg-zinc-50 dark:bg-black">
+    <section class="fixed inset-0 flex justify-center">
+      <section class="flex w-full max-w-7xl md:px-5">
+        <section class="w-full ring-1 ring-zinc-100 dark:ring-zinc-300/30 bg-white dark:bg-zinc-900"></section>
+      </section>
+    </section>
+    <section class="relative">
+      <Head client:load />
+      <Container class="mt-16 md:mt-32">
+        <section class="">
+          <section class="mx-auto max-w-3xl">
+            <article>
+              <header class="flex flex-col">
+                <h1 class="mt-6 text-3xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">{ topic }</h1>
+                <time class="order-first flex items-center text-base text-zinc-500 dark:text-zinc-700">
+                  <span class="h-4 w-0.5 rounded-full bg-zinc-300 dark:bg-zinc-500" />
+                  <span class="ml-3">{ new Date(publish).toLocaleDateString('en-Us', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) }</span>
+                </time>
+              </header>
+              <Content class="mt-12">
+                <slot />
+              </Content>
+            </article>
+          </section>
+        </section>
+      </Container>
+      <Foot />
+    </section>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+import Default from '../layouts/default.astro'
+import Container from '../components/container.svelte'
+
+import Social from '../components/social.svelte'
+
+import Article from '../components/article.svelte'
+const articleList = (await Astro.glob('./article/*.md')).filter((item) => !item.frontmatter.draft).sort(
+  (current, follow) => new Date(follow.frontmatter.publish).valueOf() - new Date(current.frontmatter.publish).valueOf()
+).slice(0, 3)
+
+import Newsletter from '../components/newsletter.svelte'
+---
+
+<Default>
+  <Container class="mt-16 md:mt-32">
+    <section class="max-w-xl">
+      <h1 class="text-zinc-900 dark:text-zinc-100 text-3xl md:text-5xl font-bold tracking-tight">Software engineer, founder and amateur writer.</h1>
+      <h2 class="mt-6 text-zinc-700 dark:text-zinc-300 text-base">I am Thomas, a software engineer, entrepreneur and sometimes maker of things based in Helsinki. I am a co-founder and CTO at Thriv, where we focus on the promotion of entrepreneurship and the future of work movement.</h2>
+    </section>
+    <Social />
+  </Container>
+  <Container class="mt-16 md:mt-32">
+    <section class="mx-auto grid grid-cols-1 md:grid-cols-2 max-w-xl md:max-w-none gap-y-16">
+      <section class="flex flex-col gap-16">
+        { articleList.map((article) => (
+          <Article article={ article } />
+        )) }
+      </section>
+      <section class="space-y-10 md:pl-16">
+        <Newsletter />
+      </section>
+    </section>
+  </Container>
+</Default>

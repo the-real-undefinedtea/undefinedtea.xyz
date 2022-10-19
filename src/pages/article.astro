@@ -1,0 +1,36 @@
+---
+import Default from '../layouts/default.astro'
+import Container from '../components/container.svelte'
+import Section from '../components/section.svelte'
+
+import CardComponent from '../components/cardComponent.svelte'
+import * as Card from '../components/card'
+
+const articleList = (await Astro.glob('./article/*.md')).filter((item) => !item.frontmatter.draft).sort(
+  (current, follow) => new Date(follow.frontmatter.publish).valueOf() - new Date(current.frontmatter.publish).valueOf()
+)
+---
+
+<Default>
+  <Container>
+    <Section topic="Things I think about in development, privacy and the world." description="All my long-form thoughts on various topics collected in chronological order for you reading pleasure.">
+      <section class="md:border-l md:pl-6 md:border-zinc-100 md:dark:border-zinc-700/30">
+        <section class="flex max-w-3xl flex-col space-y-16">
+          { articleList.map((article) => (
+            <article class="md:grid md:grid-cols-4 md:items-baseline">
+              <CardComponent as="article" class="md:col-span-3">
+                <Card.Topic to={ article.url }>{ article.frontmatter.topic }</Card.Topic>
+                <Card.Eyebrow as="time" class="md:hidden" decorate>{ new Date(article.frontmatter.publish).toLocaleDateString('en-Us', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) }</Card.Eyebrow>
+                <Card.Description>
+                  { article.frontmatter.description }
+                </Card.Description>
+                <Card.CTA>Read article</Card.CTA>
+              </CardComponent>
+              <Card.Eyebrow as="time" class="mt-1 hidden md:flex">{ new Date(article.frontmatter.publish).toLocaleDateString('en-Us', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) }</Card.Eyebrow>
+            </article>
+          )) }
+        </section>
+      </section>
+    </Section>
+  </Container>
+</Default>

@@ -1,0 +1,26 @@
+---
+import Meta from '../components/metaDescription.svelte'
+
+import Head from '../components/head.svelte'
+import Foot from '../components/foot.svelte'
+---
+
+<html class="antialiased" lang="en">
+  <head>
+    <Meta route="undefinedtea" description="welcome" />
+  </head>
+  <body class="flex flex-col h-full bg-zinc-50 dark:bg-black">
+    <section class="fixed inset-0 flex justify-center">
+      <section class="flex w-full max-w-7xl md:px-5">
+        <section class="w-full ring-1 ring-zinc-100 dark:ring-zinc-300/30 bg-white dark:bg-zinc-900"></section>
+      </section>
+    </section>
+    <section class="relative">
+      <Head client:load />
+      <main>
+        <slot />
+      </main>
+      <Foot />
+    </section>
+  </body>
+</html>
