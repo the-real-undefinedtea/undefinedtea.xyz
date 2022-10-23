@@ -5,8 +5,6 @@ description: 'content'
 publish: 'Oct 21 2022'
 draft: true
 tag: ['']
-author: ''
+author: 'undefinedtea'
 image: ''
 ---
-
-content

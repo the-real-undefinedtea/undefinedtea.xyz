@@ -8,5 +8,3 @@ tag: ['']
 author: 'undefinedtea'
 image: ''
 ---
-
-content
