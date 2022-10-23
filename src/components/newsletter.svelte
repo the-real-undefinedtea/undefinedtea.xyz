@@ -1,6 +1,6 @@
 <script lang="ts">
   import CTA from '../components/cta.svelte'
-  import { putNewsletterData } from '../service/api'
+  // import { putNewsletterData } from '../service/api'
 
   let load = false
 
@@ -9,10 +9,10 @@
   const authenticate = async () => {
     try {
       load = true
-      const { error } = await putNewsletterData({
-        email
-      })
-      if(error) throw error
+      // const { error } = await putNewsletterData({
+      //   email
+      // })
+      // if(error) throw error
       message = {
         content: 'Thank you kind stranger. Stay hydrated.'
       }
