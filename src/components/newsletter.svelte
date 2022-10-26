@@ -14,7 +14,8 @@
       // })
       // if(error) throw error
       message = {
-        content: 'Thank you kind stranger. Stay hydrated.'
+        // content: 'Thank you kind stranger. Stay hydrated.'
+        content: 'This feature will be implemented soon.'
       }
     } catch(error) {
       message = {
