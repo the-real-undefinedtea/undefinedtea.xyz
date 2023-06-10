@@ -45,7 +45,7 @@
   <div class="mt-6 flex">
     <input bind:value={ email } type="email" placeholder="email" aria-label="email" required class="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-700/5 placeholder:text-zinc-500 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-300 dark:placeholder:text-zinc-500 dark:focus:border-teal-300 dark:focus:ring-teal-300/10 md:text-sm"
     />
-    <CTA type="submit" class="ml-3 flex-none" disabled={ load }>
+    <CTA type="submit" class="ml-3 flex-none" disabled={ load } umami="newsletter">
       Subscribe
     </CTA>
   </div>
