@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://undefinedtea.dev/sitemap-index.xml
