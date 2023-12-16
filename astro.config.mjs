@@ -14,6 +14,6 @@ export default defineConfig({
       applyBaseStyles: false
     }
   }), sitemap()],
-  site: 'https://undefinedtea.dev',
+  site: 'https://undefinedtea.xyz',
   outDir: './build'
 });
