@@ -16,7 +16,7 @@
 
 <!-- twitter -->
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:url" content="https://undefinedtea.dev" />
+<meta property="twitter:url" content="https://undefinedtea.xyz" />
 <meta property="twitter:title" content={route} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content="/image/hero.png" />
